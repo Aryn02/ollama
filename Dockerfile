@@ -1,9 +1,9 @@
 # Используем базовый образ с Ollama
 FROM ollama/ollama
 
-# Скачиваем нужную модель (например, tinyllama)
-RUN ollama pull tinyllama
 
+# Запускаем Ollama в фоне и ждем перед загрузкой модели
+RUN ollama serve & sleep 5 && ollama pull tinyllama
 # Открываем порт для API
 EXPOSE 11434
 
